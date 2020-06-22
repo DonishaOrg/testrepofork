@@ -1,0 +1,277 @@
+org account(public) --> git@github.com:DonishaOrg/testrepofork.git
+
+fork from org account to personal user acct --> git@github.com:donishagreet/testrepofork.git
+
+
+
+[vagrant@localhost ~]$ git clone git@github.com:DonishaOrg/testrepofork.git
+Cloning into 'testrepofork'...
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 8 (delta 1), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (8/8), done.
+Resolving deltas: 100% (1/1), done.
+[vagrant@localhost testrepofork]$ ls -lart *
+-rw-rw-r--. 1 vagrant vagrant 1067 Jun 22 06:53 LICENSE
+-rw-rw-r--. 1 vagrant vagrant   14 Jun 22 06:53 README.md
+[vagrant@localhost testrepofork]$ cd .git
+[vagrant@localhost .git]$ ls -lrt *
+-rw-rw-r--. 1 vagrant vagrant  73 Jun 22 06:52 description
+-rw-rw-r--. 1 vagrant vagrant 255 Jun 22 06:53 packed-refs
+-rw-rw-r--. 1 vagrant vagrant  23 Jun 22 06:53 HEAD
+-rw-rw-r--. 1 vagrant vagrant 267 Jun 22 06:53 config
+-rw-rw-r--. 1 vagrant vagrant 176 Jun 22 06:53 index
+-rw-rw-r--. 1 vagrant vagrant 446 Jun 22 07:08 FETCH_HEAD
+
+branches:
+total 0
+
+info:
+total 4
+-rw-rw-r--. 1 vagrant vagrant 240 Jun 22 06:52 exclude
+
+refs:
+total 0
+drwxrwxr-x. 2 vagrant vagrant  6 Jun 22 06:52 tags
+drwxrwxr-x. 3 vagrant vagrant 20 Jun 22 06:53 remotes
+drwxrwxr-x. 2 vagrant vagrant 20 Jun 22 06:53 heads
+
+logs:
+total 4
+drwxrwxr-x. 4 vagrant vagrant  34 Jun 22 06:53 refs
+-rw-rw-r--. 1 vagrant vagrant 194 Jun 22 06:53 HEAD
+
+objects:
+total 0
+drwxrwxr-x. 2 vagrant vagrant   6 Jun 22 06:52 info
+drwxrwxr-x. 2 vagrant vagrant 121 Jun 22 06:53 pack
+drwxrwxr-x. 2 vagrant vagrant  52 Jun 22 07:08 67
+drwxrwxr-x. 2 vagrant vagrant  52 Jun 22 07:08 d3
+drwxrwxr-x. 2 vagrant vagrant  52 Jun 22 07:08 a5
+
+hooks:
+total 40
+-rwxrwxr-x. 1 vagrant vagrant  896 Jun 22 06:52 commit-msg.sample
+-rwxrwxr-x. 1 vagrant vagrant  452 Jun 22 06:52 applypatch-msg.sample
+-rwxrwxr-x. 1 vagrant vagrant  189 Jun 22 06:52 post-update.sample
+-rwxrwxr-x. 1 vagrant vagrant  398 Jun 22 06:52 pre-applypatch.sample
+-rwxrwxr-x. 1 vagrant vagrant 1704 Jun 22 06:52 pre-commit.sample
+-rwxrwxr-x. 1 vagrant vagrant 4951 Jun 22 06:52 pre-rebase.sample
+-rw-rw-r--. 1 vagrant vagrant 1348 Jun 22 06:52 pre-push.sample
+-rwxrwxr-x. 1 vagrant vagrant 1239 Jun 22 06:52 prepare-commit-msg.sample
+-rwxrwxr-x. 1 vagrant vagrant 3611 Jun 22 06:52 update.sample
+[vagrant@localhost .git]$
+
+
+New feature (feature/feature-2) added to Donishaorg account testrepofork branch
+
+[vagrant@localhost feature]$ ls -lrt
+total 4
+-rw-rw-r--. 1 vagrant vagrant 41 Jun 22 07:08 feature-2
+[vagrant@localhost feature]$ pwd
+/home/vagrant/testrepofork/.git/refs/remotes/origin/feature
+[vagrant@localhost feature]$
+
+
+In forked repo............................
+[vagrant@localhost ~]$ cd forkedrepo
+[vagrant@localhost forkedrepo]$ git clone git@github.com:donishagreet/testrepofork.git
+Cloning into 'testrepofork'...
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 11 (delta 2), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (11/11), done.
+Resolving deltas: 100% (2/2), done.
+[vagrant@localhost forkedrepo]$ ls -lrt
+total 0
+drwxrwxr-x. 3 vagrant vagrant 50 Jun 22 07:26 testrepofork
+[vagrant@localhost forkedrepo]$ cd testrepofork/
+[vagrant@localhost testrepofork]$ ls -lrt
+total 8
+-rw-rw-r--. 1 vagrant vagrant   14 Jun 22 07:26 README.md
+-rw-rw-r--. 1 vagrant vagrant 1067 Jun 22 07:26 LICENSE
+[vagrant@localhost testrepofork]$ git branches
+git: 'branches' is not a git command. See 'git --help'.
+[vagrant@localhost testrepofork]$ git branch
+* master
+[vagrant@localhost testrepofork]$ git checkout feature-rp1
+error: pathspec 'feature-rp1' did not match any file(s) known to git.
+[vagrant@localhost testrepofork]$ git checkout feature/feature-rp1
+Branch feature/feature-rp1 set up to track remote branch feature/feature-rp1 from origin.
+Switched to a new branch 'feature/feature-rp1'
+[vagrant@localhost testrepofork]$ cd .git/refs/remotes/origin/
+[vagrant@localhost origin]$ ls
+HEAD
+[vagrant@localhost origin]$ cd ..
+[vagrant@localhost remotes]$ ls -lrt
+total 0
+drwxrwxr-x. 2 vagrant vagrant 18 Jun 22 07:26 origin
+[vagrant@localhost remotes]$ cd ..
+[vagrant@localhost refs]$ ls
+heads  remotes  tags
+[vagrant@localhost refs]$ cd heads
+[vagrant@localhost heads]$ ls
+feature  master
+[vagrant@localhost heads]$ cd feature
+[vagrant@localhost feature]$ ls -lrt
+total 4
+-rw-rw-r--. 1 vagrant vagrant 41 Jun 22 07:27 feature-rp1
+[vagrant@localhost feature]$ pwd
+/home/vagrant/forkedrepo/testrepofork/.git/refs/heads/feature
+[vagrant@localhost feature]$ cd
+[vagrant@localhost ~]$ cd testrepofork/.git/refs/heads
+[vagrant@localhost heads]$ ls
+master
+[vagrant@localhost heads]$
+
+
+---------------------------------------------
+When new feature was added in Donishaorg repo, it came under refs/remotes/origin/feature
+whereas new feature added in donishagreet/forkedrepo came under refs/heads/feature
+
+----------------------------------------------
+
+[vagrant@localhost testrepofork]$ git remote -v
+origin  git@github.com:DonishaOrg/testrepofork.git (fetch)
+origin  git@github.com:DonishaOrg/testrepofork.git (push)
+[vagrant@localhost testrepofork]$ cd
+[vagrant@localhost ~]$ cd forkedrepo/
+[vagrant@localhost forkedrepo]$ git remote -v
+fatal: Not a git repository (or any of the parent directories): .git
+[vagrant@localhost forkedrepo]$ ls -lrt
+total 0
+drwxrwxr-x. 3 vagrant vagrant 73 Jun 22 07:27 testrepofork
+[vagrant@localhost forkedrepo]$ cd *
+[vagrant@localhost testrepofork]$ git remote -v
+origin  git@github.com:donishagreet/testrepofork.git (fetch)
+origin  git@github.com:donishagreet/testrepofork.git (push)
+[vagrant@localhost testrepofork]$
+
+---------------------------------------------------------
+when using https
+
+Original repo - https://github.com/DonishaOrg/testrepofork.git
+forked repo - https://github.com/donishagreet/testrepofork.git
+
+
+-----------------------------------------------------------
+
+https://help.github.com/en/enterprise/2.13/user/articles/configuring-a-remote-for-a-fork
+
+
+-----------------------------------------------------------
+
+Configuring a remote for a fork
+Mac|Windows|Linux
+You must configure a remote that points to the upstream repository in Git to sync changes you make in a fork with the original repository. This also allows you to sync changes made in the original repository with the fork.
+
+Open Terminalthe terminal.
+
+List the current configured remote repository for your fork.
+
+$ git remote -v
+> origin  https://hostname/YOUR_USERNAME/YOUR_FORK.git (fetch)
+> origin  https://hostname/YOUR_USERNAME/YOUR_FORK.git (push)
+Specify a new remote upstream repository that will be synced with the fork.
+
+$ git remote add upstream https://hostname/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+Verify the new upstream repository you've specified for your fork.
+
+$ git remote -v
+> origin    https://hostname/YOUR_USERNAME/YOUR_FORK.git (fetch)
+> origin    https://hostname/YOUR_USERNAME/YOUR_FORK.git (push)
+> upstream  https://hostname/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
+> upstream  https://hostname/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
+
+--------------------------------------------------------------------------------------------
+
+[vagrant@localhost testrepofork]$ git remote -v
+origin  https://github.com/DonishaOrg/testrepofork.git (fetch)
+origin  https://github.com/DonishaOrg/testrepofork.git (push)
+[vagrant@localhost testrepofork]$ pwd
+/home/vagrant/httpsgit/testrepofork
+[vagrant@localhost testrepofork]$
+
+
+[vagrant@localhost testrepofork]$ cd ..
+[vagrant@localhost httpsgit]$ cd forkedrepo/
+[vagrant@localhost forkedrepo]$ cd testrepofork/
+[vagrant@localhost testrepofork]$ git remote -v
+origin  https://github.com/donishagreet/testrepofork.git (fetch)
+origin  https://github.com/donishagreet/testrepofork.git (push)
+[vagrant@localhost testrepofork]$ pwd
+/home/vagrant/httpsgit/forkedrepo/testrepofork
+[vagrant@localhost testrepofork]$
+
+[vagrant@localhost testrepofork]$ pwd
+/home/vagrant/httpsgit/forkedrepo/testrepofork
+[vagrant@localhost testrepofork]$ pwd
+/home/vagrant/httpsgit/forkedrepo/testrepofork
+[vagrant@localhost testrepofork]$ git remote add upstream https://github.com/DonishaOrg/testrepofork.git
+[vagrant@localhost testrepofork]$ git remote -v
+origin  https://github.com/donishagreet/testrepofork.git (fetch)
+origin  https://github.com/donishagreet/testrepofork.git (push)
+upstream        https://github.com/DonishaOrg/testrepofork.git (fetch)
+upstream        https://github.com/DonishaOrg/testrepofork.git (push)
+[vagrant@localhost testrepofork]$
+[vagrant@localhost testrepofork]$ cd .git
+[vagrant@localhost .git]$ ls -lart
+total 20
+drwxrwxr-x.  2 vagrant vagrant   6 Jun 22 07:42 branches
+-rw-rw-r--.  1 vagrant vagrant  73 Jun 22 07:42 description
+drwxrwxr-x.  2 vagrant vagrant  21 Jun 22 07:42 info
+drwxrwxr-x.  2 vagrant vagrant 242 Jun 22 07:42 hooks
+drwxrwxr-x. 15 vagrant vagrant 140 Jun 22 07:42 objects
+-rw-rw-r--.  1 vagrant vagrant 336 Jun 22 07:42 packed-refs
+drwxrwxr-x.  5 vagrant vagrant  46 Jun 22 07:42 refs
+-rw-rw-r--.  1 vagrant vagrant  23 Jun 22 07:42 HEAD
+drwxrwxr-x.  3 vagrant vagrant  30 Jun 22 07:42 logs
+-rw-rw-r--.  1 vagrant vagrant 176 Jun 22 07:42 index
+drwxrwxr-x.  3 vagrant vagrant  50 Jun 22 07:42 ..
+-rw-rw-r--.  1 vagrant vagrant 394 Jun 22 07:57 config
+drwxrwxr-x.  8 vagrant vagrant 163 Jun 22 07:57 .
+[vagrant@localhost .git]$ cat config
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[remote "origin"]
+        url = https://github.com/donishagreet/testrepofork.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master
+[remote "upstream"]
+        url = https://github.com/DonishaOrg/testrepofork.git
+        fetch = +refs/heads/*:refs/remotes/upstream/*
+[vagrant@localhost .git]$cd ..
+[vagrant@localhost testrepofork]$ git fetch
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (1/1), done.
+From https://github.com/donishagreet/testrepofork
+   7a6b7e1..04d695f  develop    -> origin/develop
+
+[vagrant@localhost testrepofork]$ git remote
+origin
+upstream
+[vagrant@localhost testrepofork]$ git fetch upstream
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/DonishaOrg/testrepofork
+ * [new branch]      develop    -> upstream/develop
+ * [new branch]      feature/feature-1 -> upstream/feature/feature-1
+ * [new branch]      feature/feature-2 -> upstream/feature/feature-2
+ * [new branch]      master     -> upstream/master
+[vagrant@localhost testrepofork]$
+
+----------------------------------------------------------------------------------------------
+
+https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github
